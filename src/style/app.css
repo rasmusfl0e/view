@@ -1,0 +1,90 @@
+@font-face {
+	font-family: "BLOKKNeue-Regular";
+	src: url("../fonts/BLOKKNeue-Regular.eot");
+	src: url("../fonts/BLOKKNeue-Regular.eot?#iefix") format("embedded-opentype"),
+		 url("../fonts/BLOKKNeue-Regular.woff") format("woff"),
+		 url("../fonts/BLOKKNeue-Regular.svg#BLOKKNeue-Regular") format("svg");
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: "BLOKKRegular";
+	src: url("../fonts/BLOKKRegular.eot");
+	src: url("../fonts/BLOKKRegular.eot?#iefix") format("embedded-opentype"),
+		 url("../fonts/BLOKKRegular.woff") format("woff"),
+		 url("../fonts/BLOKKRegular.svg#BLOKKRegular") format("svg");
+	font-weight: normal;
+	font-style: normal;
+}
+
+* {
+	padding: 0;
+	margin: 0;
+}
+
+*, *:before, *:after {
+	box-sizing: border-box;
+}
+
+html {
+	font-size: 100%;
+	-webkit-text-size-adjust: 100%;
+	-ms-text-size-adjust: 100%;
+}
+
+.item {
+	max-width: 640px;
+	padding: 20px;
+	background-color: #EEE;
+}
+
+.image {
+	float: left;
+	width: 33.3333333333%;
+	margin-right: 20px;
+}
+
+.image:after {
+	content: "";
+	display: block;
+	padding-bottom: 56.25%;
+	background-color: rgba(0, 0, 0, 0.2);
+}
+
+.item > h3 {
+	font-size: 36px;
+}
+.item > h3 > i {
+	color: red;
+	font-style: normal;
+	text-transform: uppercase;
+}
+.item > h3 > i:after {
+	content: " ";
+}
+
+.item > p {
+	font-size: 16px;
+}
+
+.item > h3 > i:empty:before {
+	content: "x";
+	font-family: "BLOKKRegular";
+	font-weight: normal;
+	word-spacing: -.75em;
+	color: #F88;
+}
+.item > h3 > span:empty:before {
+	content: "x xx";
+	font-family: "BLOKKRegular";
+	font-weight: normal;
+	word-spacing: -.75em;
+	color: #444;
+}
+.item > p:empty:before {
+	content: "x xxx x xx xxx xx";
+	font-family: "BLOKKRegular";
+	word-spacing: -.5em;
+	color: #444;
+}
