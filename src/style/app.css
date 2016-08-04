@@ -1,3 +1,5 @@
+@font-face{font-family:"gibsonLight";src:url("http://www.dr.dk/assets/fonts/gibson/light/gibson-light-webfont.eot");src:url("http://www.dr.dk/assets/fonts/gibson/light/gibson-light-webfont.eot?#iefix") format("embedded-opentype"),url("http://www.dr.dk/assets/fonts/gibson/light/gibson-light-webfont.woff2") format("woff2"),url("http://www.dr.dk/assets/fonts/gibson/light/gibson-light-webfont.woff") format("woff"),url("http://www.dr.dk/assets/fonts/gibson/light/gibson-light-webfont.ttf") format("truetype"),url("http://www.dr.dk/assets/fonts/gibson/light/gibson-light-webfont.svg") format("svg");font-weight:normal}@font-face{font-family:"gibsonRegular";src:url("http://www.dr.dk/assets/fonts/gibson/regular/gibson-regular-webfont.eot");src:url("http://www.dr.dk/assets/fonts/gibson/regular/gibson-regular-webfont.eot?#iefix") format("embedded-opentype"),url("http://www.dr.dk/assets/fonts/gibson/regular/gibson-regular-webfont.woff2") format("woff2"),url("http://www.dr.dk/assets/fonts/gibson/regular/gibson-regular-webfont.woff") format("woff"),url("http://www.dr.dk/assets/fonts/gibson/regular/gibson-regular-webfont.ttf") format("truetype"),url("http://www.dr.dk/assets/fonts/gibson/regular/gibson-regular-webfont.svg") format("svg");font-weight:normal}@font-face{font-family:"gibsonSemiBold";src:url("http://www.dr.dk/assets/fonts/gibson/semiBold/gibson-semiBold-webfont.eot");src:url("http://www.dr.dk/assets/fonts/gibson/semiBold/gibson-semiBold-webfont.eot?#iefix") format("embedded-opentype"),url("http://www.dr.dk/assets/fonts/gibson/semiBold/gibson-semiBold-webfont.woff2") format("woff2"),url("http://www.dr.dk/assets/fonts/gibson/semiBold/gibson-semiBold-webfont.woff") format("woff"),url("http://www.dr.dk/assets/fonts/gibson/semiBold/gibson-semiBold-webfont.ttf") format("truetype"),url("http://www.dr.dk/assets/fonts/gibson/semiBold/gibson-semiBold-webfont.svg") format("svg");font-weight:normal}@font-face{font-family:"gibsonBold";src:url("http://www.dr.dk/assets/fonts/gibson/bold/gibson-bold-webfont.eot");src:url("http://www.dr.dk/assets/fonts/gibson/bold/gibson-bold-webfont.eot?#iefix") format("embedded-opentype"),url("http://www.dr.dk/assets/fonts/gibson/bold/gibson-bold-webfont.woff2") format("woff2"),url("http://www.dr.dk/assets/fonts/gibson/bold/gibson-bold-webfont.woff") format("woff"),url("http://www.dr.dk/assets/fonts/gibson/bold/gibson-bold-webfont.ttf") format("truetype"),url("http://www.dr.dk/assets/fonts/gibson/bold/gibson-bold-webfont.svg") format("svg");font-weight:normal}
+
 @font-face {
 	font-family: "BLOKKNeue-Regular";
 	src: url("../fonts/BLOKKNeue-Regular.eot");
@@ -33,16 +35,19 @@ html {
 	-ms-text-size-adjust: 100%;
 }
 
-.item {
+#root {
 	max-width: 640px;
+	margin: 0 auto;
+}
+
+.item {
 	padding: 20px;
 	background-color: #EEE;
+	margin-top: 20px;
 }
 
 .image {
-	float: left;
-	width: 33.3333333333%;
-	margin-right: 20px;
+	margin-bottom: 10px;
 }
 
 .image:after {
@@ -52,39 +57,76 @@ html {
 	background-color: rgba(0, 0, 0, 0.2);
 }
 
-.item > h3 {
+.text > h3 {
+	font-family: "gibsonSemiBold";
 	font-size: 36px;
+	font-weight: normal;
 }
-.item > h3 > i {
+.text > h3 > i {
 	color: red;
 	font-style: normal;
 	text-transform: uppercase;
 }
-.item > h3 > i:after {
+.text > h3 > i:after {
 	content: " ";
 }
 
-.item > p {
+.text > p {
+	font-family: Georgia;
 	font-size: 16px;
 }
 
-.item > h3 > i:empty:before {
+
+.item--a-3:after {
+	content: "";
+	display: block;
+	clear: both;
+}
+.item--a-3 .image {
+	float: left;
+	width: 33.3333333333%;
+	margin-bottom: 0;
+}
+.item--a-3 .text {
+	float: right;
+	width: 66.6666666666%;
+	padding-left: 20px;
+}
+
+/* ui */
+
+.item--focused {
+	outline: 3px solid orange;
+	outline-offset: 10px;
+}
+
+.item--selected {
+	outline: 3px solid lightblue;
+	outline-offset: 10px;
+}
+
+.item [contenteditable]:focus {
+	outline: 3px solid orange;
+	outline-offset: 10px;
+}
+
+.text > h3 > i:empty:after {
 	content: "x";
 	font-family: "BLOKKRegular";
 	font-weight: normal;
 	word-spacing: -.75em;
-	color: #F88;
+	opacity: 0.25;
 }
-.item > h3 > span:empty:before {
+.text > h3 > span:empty:after {
 	content: "x xx";
 	font-family: "BLOKKRegular";
 	font-weight: normal;
 	word-spacing: -.75em;
-	color: #444;
+	opacity: 0.25;
 }
-.item > p:empty:before {
+.text > p:empty:after {
 	content: "x xxx x xx xxx xx";
 	font-family: "BLOKKRegular";
 	word-spacing: -.5em;
-	color: #444;
+	opacity: 0.25;
 }
