@@ -128,14 +128,12 @@ html {
 	outline-offset: 10px;
 }
 
-.item [contenteditable]:focus {
+[contenteditable=true]:focus {
 	outline: 3px solid orange;
 	outline-offset: 10px;
 }
 
-.text > h3 > i:empty:after,
-.text > h3 > span:empty:after,
-.text > p:empty:after {
+[contenteditable=true]:after {
 	font-family: "BLOKKRegular";
 	word-spacing: -.85em;
 	opacity: 0.25;
