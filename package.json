@@ -8,8 +8,7 @@
   "dependencies": {
     "cross-env": "^2.0.0",
     "react": "^15.2.1",
-    "react-dom": "^15.2.1",
-    "react-wysiwyg": "^2.2.1"
+    "react-dom": "^15.2.1"
   },
   "scripts": {
     "start": "cross-env PORT=4444 react-scripts start",

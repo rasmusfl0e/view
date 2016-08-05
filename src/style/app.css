@@ -36,14 +36,16 @@ html {
 }
 
 #root {
-	max-width: 640px;
+	max-width: 660px;
 	margin: 0 auto;
 }
 
 .item {
+	float: left;
 	padding: 20px;
 	background-color: #EEE;
-	margin-top: 20px;
+	margin: 20px 10px 0;
+	width: calc(100% - 20px);
 }
 
 .image {
@@ -93,8 +95,29 @@ html {
 	padding-left: 20px;
 }
 
+.item--b,
+.item--b-2,
+.item--b-3 {
+	width: calc(50% - 20px);
+}
+
+
+
+.item--b-3 .image {
+	float: left;
+	width: calc(50% - 10px);
+	margin-bottom: 0;
+}
+.item--b-3 .text {
+	float: right;
+	width: calc(50% + 10px);
+	padding-left: 20px;
+}
+
 /* ui */
 
+
+.item:focus,
 .item--focused {
 	outline: 3px solid orange;
 	outline-offset: 10px;
@@ -110,23 +133,20 @@ html {
 	outline-offset: 10px;
 }
 
-.text > h3 > i:empty:after {
-	content: "x";
+.text > h3 > i:empty:after,
+.text > h3 > span:empty:after,
+.text > p:empty:after {
 	font-family: "BLOKKRegular";
-	font-weight: normal;
-	word-spacing: -.75em;
+	word-spacing: -.85em;
 	opacity: 0.25;
+}
+
+.text > h3 > i:empty:after {
+	content: "x ";
 }
 .text > h3 > span:empty:after {
 	content: "x xx";
-	font-family: "BLOKKRegular";
-	font-weight: normal;
-	word-spacing: -.75em;
-	opacity: 0.25;
 }
 .text > p:empty:after {
 	content: "x xxx x xx xxx xx";
-	font-family: "BLOKKRegular";
-	word-spacing: -.5em;
-	opacity: 0.25;
 }

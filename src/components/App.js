@@ -1,12 +1,11 @@
 import React, { Component } from "react";
-import ContentEditable from "react-wysiwyg";
 import "../style/app.css";
 
 var items = [
 	{id: 1, skin: "a"},
 	{id: 2, skin: "a-3"},
 	{id: 3, skin: "a-3"},
-	{id: 4, skin: "b"},
+	{id: 4, skin: "b-3"},
 	{id: 5, skin: "b"}
 ];
 
@@ -15,13 +14,23 @@ class Item extends Component {
 	constructor(props) {
 		super();
 
-		this.select = this.select.bind(this);
+		this.keyhandler = this.keyhandler.bind(this);
 		this.focusChild = this.focusChild.bind(this);
+		this.paste = this.paste.bind(this);
 	}
 
-	select(event) {
-		if (event.key === "Enter" && this.props.selected !== this.props.id) {
-			this.focusChild();
+	keyhandler(event) {
+
+		switch (event.key) {
+
+			case "Enter":
+				if (this.props.selected !== this.props.id) {
+					this.focusChild();
+				}
+				break;
+
+			default:
+				break;
 		}
 	}
 
@@ -35,17 +44,32 @@ class Item extends Component {
 				event.stopPropagation();
 				event.preventDefault();
 				break;
+
+			default:
+				break;
 		}
 	}
 
-	paste(event) {
-		console.log("paste", event);
-		var data = event.clipboardData.getData("text/plain");
-		event.clipboardData = data.replace(/(<([^>]+)>)/ig,"");
+	// from react-wysiwyg
+	_replaceCurrentSelection(data) {
+		var selection = window.getSelection();
+		var range = selection.getRangeAt(0);
+		range.deleteContents();
+		var fragment = range.createContextualFragment('');
+		fragment.textContent = data;
+		var replacementEnd = fragment.lastChild;
+		range.insertNode(fragment);
+		// Set cursor at the end of the replaced content, just like browsers do.
+		range.setStartAfter(replacementEnd);
+		range.collapse(true);
+		selection.removeAllRanges();
+		selection.addRange(range);
 	}
 
-	change(textContent, placeholder) {
-		console.log("change", textContent, placeholder);
+	paste(event) {
+		var data = event.clipboardData.getData("text/plain");
+		this._replaceCurrentSelection(data);
+		event.preventDefault();
 	}
 
 	render() {
@@ -67,12 +91,11 @@ class Item extends Component {
 		else if (focused === id) {
 			className += " item--focused";
 		}
-
-		return (<div className={className} onFocus={()=>this.props.focus(this.props.id)} onKeyDown={this.select} tabIndex={ (!selected) ? 0 : -1 }>
+// <ContentEditable tagName="p" preventStyling noLinebreaks editing={this.state.editing} onChange={this.change} onFocus={()=>this.setState({editing: true})} onBlur={()=>this.setState({editing: false})}/>
+		return (<div className={className} onFocus={()=>this.props.focus(this.props.id)} onKeyDown={this.keyhandler} tabIndex={ (!selected) ? 0 : -1 }>
 					<div className="image" {...childProps} contentEditable="false"></div>
 					<div className="text">
 						<h3><i {...childProps}></i><span {...childProps}></span></h3>
-						<ContentEditable tagName="p" preventStyling noLinebreaks editing={true} onChange={this.change}/>
 						<p {...childProps}></p>
 					</div>
 				</div>);
